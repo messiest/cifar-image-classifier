@@ -3,17 +3,15 @@ import os
 from torchvision.datasets.cifar import CIFAR100
 
 
-IMG_DIR = 'data/'
+IMG_DIR = './data'
 
 
 def main():
     """download cifar100 dataset"""
     print("Downloading CIFAR100 dataset.")
-    data_path = os.path.join(IMG_DIR, 'CIFAR100')
-    if not os.path.exists(data_path):
-        os.mkdir(data_path)
-    cifar = CIFAR100(root=data_path, download=True)
-    # cifar.download()
+    if not os.path.exists(IMG_DIR):
+        os.mkdir(IMG_DIR)
+    cifar = CIFAR100(root=IMG_DIR, download=True)
     print("Download complete.")
 
 
