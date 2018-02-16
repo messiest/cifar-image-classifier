@@ -4,17 +4,10 @@ import sys
 import torch
 from torch.autograd import Variable
 
-from googlenet import GoogLeNet
+from models.googlenet import GoogLeNet
 
 
-try:
-    device_name = sys.argv[1]  # Choose device from cmd line. Options: gpu or cpu
-    if device_name == "gpu":
-        device_name = "/gpu:0"
-    else:
-        device_name = "/cpu:0"
-except:
-    device_name = "/cpu:0"
+cuda = torch.cuda.is_available()  # Hopefully you can you use GPUs?
 
 
 def main(timer=True):
@@ -25,7 +18,6 @@ def main(timer=True):
     print(net)
     params = list(net.parameters())
     print(len(params))
-
     _input = Variable(torch.randn(1, 3, 32, 32))  # create input vector
     out = net(_input)  # run the input vector through the network
     print('out\n', out)
