@@ -1,4 +1,4 @@
 # CIFAR-10 Image Classifier
 
-An image classifier for the [CIFAR-10 Dataset](https://www.cs.tironto.edu/~kriz/cifar.html).
+An image classifier for the [CIFAR Datasets](https://www.cs.toronto.edu/~kriz/cifar.html).
 
