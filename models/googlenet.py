@@ -55,9 +55,7 @@ class Inception(nn.Module):
 
     def forward(self, x):
         """overwritten for torch"""
-        pack = [f(x) for f in self.paths]
-
-        print("PACK:", pack)
+        pack = [path(x) for path in self.paths]
 
         return torch.cat(pack, 1)
 
