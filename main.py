@@ -59,7 +59,7 @@ def main(net, resume=False):
             total += targets.size(0)
             correct += predicted.eq(targets.data).cpu().sum()
 
-            print("{} - {}%".format(i, 100.*correct/total))
+            print("{} - {:.2f}%".format(i, 100.*correct/total))
 
     def testing(epoch):
         nonlocal best_acc
@@ -91,7 +91,7 @@ def main(net, resume=False):
             }
             if not os.path.isdir('checkpoint'):
                 os.mkdir('checkpoint')
-            torch.save(state, './checkpoint/ckpt.t7')  # ?
+            torch.save(state, './checkpoint/ckpt.t7')
             best_acc = acc
 
     for epoch in range(200):
