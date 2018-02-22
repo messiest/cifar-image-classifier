@@ -7,14 +7,15 @@ import time
 
 def get_label_vectors():
     """
-        generate label vectors from collected images
+     wgenerate label vectors from collected images
 
     :return: dictionary of labels and label vectors
     :rtype: dict
     """
     print("Retrieving label vectors...")
-    label_dict = {}                                                         # instantiate dict for labels:vectors
-    categories = sorted((c for c in os.listdir('images/') if c[0] != '.'))  # ignore hidden files
+    label_dict = {}  # instantiate dict for labels:vectors
+    # read in image files
+    categories = sorted((c for c in os.listdir('images/') if c[0] != '.'))
     x = np.zeros(len(categories))                                           # zero vector of number of categories
     for i, c in enumerate(categories):                                      # get index and category for images
         y = x.copy()                                                        # use copy of x
@@ -27,7 +28,7 @@ def get_label_vectors():
 
 def load_image_data():
     """
-        load image data from collected categories
+    load image data from collected categories
 
     :return: image data vectors
     :rtype: numpy.ndarray
@@ -52,7 +53,7 @@ def load_image_data():
 
 def load_image_labels():
     """
-        load image data from collected categories
+    load image data from collected categories
 
     :return: label vectors
     :rtype: numpy.ndarray
@@ -60,13 +61,13 @@ def load_image_labels():
     print("Loading image labels...")
     label_dict = get_label_vectors()
     print("Retrieved vector names.")
-    categories = (c for c in os.listdir('images/') if c[0] != '.')               # ignore
-    labels = []                                                                  # instantiate list for image labels
+    categories = (c for c in os.listdir('images/') if c[0] != '.')  # ignore
+    labels = []  # instantiate list for image labels
     for i in categories:
-        path = 'images/{}/'.format(i)                                            # define path to category folder
-        for j in os.listdir(path):                                               # get images from category folder
-            labels.append(label_dict[i])                                         # append label vector
-    labels = np.array(labels)                                                    # convert lists to array
+        path = 'images/{}/'.format(i)  # define path to category folder
+        for _ in os.listdir(path):  # get images from category folder
+            labels.append(label_dict[i])  # append label vector
+    labels = np.array(labels)  # convert lists to array
     print("Done.")
 
     return labels
